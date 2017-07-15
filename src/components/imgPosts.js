@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import { delet } from '../actions'
+import { deletImg } from '../actions'
 import { connect } from 'react-redux'
 
-class Individual extends Component {
+class ImgPosts extends Component {
   constructor(props){
     super(props)
 
@@ -21,14 +21,14 @@ class Individual extends Component {
 
   onDel(){
 
-    this.props.delet(this.props.index)
+    this.props.deletImg(this.props.index)
 
   }
 
   render(){
     return(
       <div>
-        <h1>{this.props.content}</h1>
+        <img src={this.props.imgurl} alt='uploaded picture'/>
         <button
           onClick={this.onLikeHandle.bind(this)}>
           {`${this.state.times} Like`}
@@ -41,4 +41,4 @@ class Individual extends Component {
   }
 }
 
-export default connect(null, {delet} )(Individual)
+export default connect(null, {deletImg} )(ImgPosts)

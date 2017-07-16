@@ -4,6 +4,7 @@ import InputField from './components/inputField'
 import NewsFeed from './components/posts'
 
 
+
 class App extends Component {
 
 
@@ -13,6 +14,8 @@ class App extends Component {
         <SearchBar />
         <InputField />
         <NewsFeed />
+        
+
       </div>
     );
   }

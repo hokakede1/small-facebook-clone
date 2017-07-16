@@ -4,14 +4,14 @@ var user = {
   name: 'Huy Dang',
   posts: [],
   imgPost: [],
-  profilePic: '',
+  profilePic: 'https://s-media-cache-ak0.pinimg.com/736x/29/9e/56/299e56ab07c75af6407289ecc4ab1dd6--mothers-love-mother-daughters.jpg',
 }
 
 //Declare Action_type
 var POST = 'POST';
 var DELETE = 'DELETE';
 var POST_IMAGE = 'POST_IMAGE';
-// var UPDATE_PRO = 'UPDATE_PRO';
+var UPDATE_PRO = 'UPDATE_PRO';
 var DELETE_IMG = 'DELETE_IMG'
 var EDIT = 'EDIT';
 
@@ -56,12 +56,12 @@ export default function reducer(state=user, action) {
       }
     }
 
-    // case UPDATE_PRO:{
-    //   return {...state,
-    //     profilePic: action.package
-    //   }
-    // break;
-    // }
+    case UPDATE_PRO:{
+      return {...state,
+        profilePic: action.payload
+      }
+
+    }
 
     default:
       return state;

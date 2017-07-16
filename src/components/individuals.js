@@ -14,13 +14,30 @@ class Individual extends Component {
       copy: copy,
       times: '',
       comment:[],
-      editinput: ''
+      editinput: '',
+      toggleComment: false,
+      toggleEdit: false,
     }
 
     this.onEditChange = this.onEditChange.bind(this);
     this.onEditSubmit = this.onEditSubmit.bind(this);
     this.onCommentEditSubmit = this.onCommentEditSubmit.bind(this);
+    this.onToggleComment = this.onToggleComment.bind(this);
+    this.onToggleEdit = this.onToggleEdit.bind(this);
   }
+
+  onToggleComment(){
+    this.setState({
+      toggleComment: !this.state.toggleComment
+    })
+  }
+
+  onToggleEdit(){
+    this.setState({
+      toggleEdit: !this.state.toggleEdit
+    })
+  }
+
 
   onCommentEditSubmit(index, value){
     console.log(value, index,'thisone')
@@ -68,24 +85,32 @@ class Individual extends Component {
   }
 
 
+
   render(){
-    console.log( this.state.editinput )
+    var displayNone = {
+      display: 'none'
+    }
     return(
       <div>
         <h1>{this.props.content}</h1>
-        <input value={this.state.copy}
+        <input
+              style={this.state.toggleEdit ? null : displayNone}
+              value={this.state.copy}
               onChange={this.onEditChange}
           ></input>
-        <button onClick={this.onEditSubmit}>EDIT</button>
+        <button
+          style={this.state.toggleEdit ? null : displayNone}
+          onClick={this.onEditSubmit}>EDIT</button>
         <br />
         <button
           onClick={this.onLikeHandle.bind(this)}>
           {`${this.state.times} Like`}
         </button>
-        <button>Edit</button>
-        <button>Comment</button>
+        <button onClick={this.onToggleEdit}>Edit</button>
+        <button onClick={this.onToggleComment}>{`${this.state.comment.length} Comment`}</button>
         <button onClick={this.onDel.bind(this)}>Delete</button>
         <Comment
+          status={this.state.toggleComment}
           editComment={this.onCommentEditSubmit}
           deleteComment={this.deleteComment.bind(this)}
           mainComment={this.state.comment}

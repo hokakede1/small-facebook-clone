@@ -8,11 +8,27 @@ export default class Bbc extends Component {
     this.state = {
       like: false,
       times: '',
-      comment: []
+      comment: [],
+      toggleComment: false,
+      toggleEdit: false
     }
 
     this.onLikeHandle = this.onLikeHandle.bind(this)
     this.onCommentEditSubmit = this.onCommentEditSubmit.bind(this);
+    this.onToggleComment = this.onToggleComment.bind(this);
+    this.onToggleEdit = this.onToggleEdit.bind(this);
+  }
+
+  onToggleComment(){
+    this.setState({
+      toggleComment: !this.state.toggleComment
+    })
+  }
+
+  onToggleEdit(){
+    this.setState({
+      toggleEdit: !this.state.toggleEdit
+    })
   }
 
 
@@ -46,6 +62,7 @@ export default class Bbc extends Component {
   }
 
   render() {
+
     return (
       <div>
         <h1>{this.props.author}</h1>
@@ -53,8 +70,9 @@ export default class Bbc extends Component {
           <img alt='Fail to Upload' src={this.props.thumbnail}/> </a>
         <a href={this.props.link} target='_blank'><h1>{this.props.header}</h1> </a>
         <button onClick={this.onLikeHandle}>{`${this.state.times} Like`}</button>
-        <button>Comment</button>
+        <button onClick={this.onToggleComment}>{`${this.state.comment.length} Comment`}</button>
         <Comment
+          status={this.state.toggleComment}
           editComment={this.onCommentEditSubmit}
           deleteComment={this.deleteComment.bind(this)}
           mainComment={this.state.comment}

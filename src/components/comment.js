@@ -23,10 +23,6 @@ class Comment extends Component {
       return alert('Please type your comment in')
     }
     e.preventDefault();
-    // this.setState({
-    //   comment: [...this.state.comment, this.state.commentinput],
-    //   commentinput: ''
-    // })
     this.props.changeComment(this.state.commentinput)
     this.setState({
       commentinput: ''
@@ -48,8 +44,12 @@ class Comment extends Component {
       )
     })
 
+    var displayNone = {
+      display: 'none'
+    }
+
     return(
-      <div>
+      <div style={this.props.status ? null : displayNone}>
         {commentContent}
         <form onSubmit={this.commentSubmit.bind(this)}>
           <label>

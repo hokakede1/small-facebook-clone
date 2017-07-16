@@ -37,3 +37,10 @@ export function postImg(content){
       payload: content
   }
 }
+
+export function changePro(text){
+  return {
+    type: 'UPDATE_PRO',
+    payload: text
+  }
+}

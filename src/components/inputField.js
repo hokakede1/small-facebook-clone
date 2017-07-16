@@ -28,7 +28,9 @@ class InputField extends Component {
 
 // Set component input listener states to the store
   onClickEvent(e){
-    if (!this.state.input) {return alert('Please type something')}
+    if (!this.state.input) {
+      e.preventDefault();
+      return alert('Please type something')}
     e.preventDefault();
     this.props.postNewsFeed(this.state.input);
     this.setState({
@@ -37,7 +39,9 @@ class InputField extends Component {
   }
 
   onSubmitImg(e){
-    if (!this.state.imgInput) {return alert('Please give an url')}
+    if (!this.state.imgInput) {
+      e.preventDefault();
+      return alert('Please give an url')}
     e.preventDefault();
     this.props.postImg(this.state.imgInput);
     this.setState({

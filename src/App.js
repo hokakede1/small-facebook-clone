@@ -3,7 +3,10 @@ import SearchBar from './components/searchBar';
 import InputField from './components/inputField'
 import NewsFeed from './components/posts'
 
+
 class App extends Component {
+
+
   render() {
     return (
       <div>

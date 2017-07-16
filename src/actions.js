@@ -20,7 +20,15 @@ export function deletImg(index){
   }
 }
 
-
+export function editPost(index, value){
+  console.log('index',index)
+  console.log('value',value)
+  return {
+    type: 'EDIT',
+    index: index,
+    payload: value
+  }
+}
 
 
 export function postImg(content){

@@ -5,17 +5,16 @@ var user = {
   posts: [],
   imgPost: [],
   profilePic: '',
-  comment: [],
-  username: 'huydang97'
 }
 
 //Declare Action_type
 var POST = 'POST';
 var DELETE = 'DELETE';
 var POST_IMAGE = 'POST_IMAGE';
-var UPDATE_PRO = 'UPDATE_PRO';
+// var UPDATE_PRO = 'UPDATE_PRO';
 var DELETE_IMG = 'DELETE_IMG'
-// var COMMENT = 'COMMENT';
+var EDIT = 'EDIT';
+
 
 
 
@@ -27,7 +26,6 @@ export default function reducer(state=user, action) {
     return  {...state,
         posts: [...state.posts, action.payload]
       }
-    break;
     }
 
     case DELETE:{
@@ -35,7 +33,6 @@ export default function reducer(state=user, action) {
       return {...state,
         posts: state.posts.filter((e, i) => {return i !== action.payload} ),
       }
-    break;
     }
 
     case DELETE_IMG:{
@@ -43,14 +40,20 @@ export default function reducer(state=user, action) {
       return {...state,
         imgPost: state.imgPost.filter((e, i) => {return i !== action.payload} )
       }
-    break;
     }
 
     case POST_IMAGE:{
       return {...state,
         imgPost: [...state.imgPost, action.payload]
       }
-    break;
+    }
+
+    case EDIT:{
+      var newarr = state.posts.slice();
+      newarr[action.index] = action.payload;
+      return {...state,
+        posts: newarr
+      }
     }
 
     // case UPDATE_PRO:{

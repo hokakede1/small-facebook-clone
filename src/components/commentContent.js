@@ -55,22 +55,53 @@ class CommentContent extends Component {
     }
 
     return (
-      <div>
-        <h6 style={this.state.toggleEdit ? displayNone : null}
-          > {this.props.allcomment} </h6>
-        <input style={this.state.toggleEdit ? null : displayNone}
-               value={this.state.editinput}
-               onChange={this.onEditChange}
-          ></input>
-        <button
-          style={this.state.toggleEdit ? null : displayNone}
-          onClick={this.onEditSubmit}>Edit</button>
-        <br />
-        <button onClick={this.onLikeHandle.bind(this)}>
-          {`${this.state.times} Like`}</button>
-        <button onClick={this.onDeleteComment.bind(this)}>Delete</button>
-        <button onClick={this.onToggleEdit}>Edit</button>
+      <div className='box commentContent'>
+        <article className='media'>
+          <div className="media-left">
+            <figure className="image is-64x64">
+            <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image" />
+            </figure>
+          </div>
 
+          <div className='media-content'>
+            <div className='content'>
+
+              <p style={this.state.toggleEdit ? displayNone : null}
+                > {this.props.allcomment} </p>
+
+              <input
+                    className='textarea'
+                    style={this.state.toggleEdit ? null : displayNone}
+                     value={this.state.editinput}
+                     onChange={this.onEditChange}
+                ></input>
+                <button
+                  className='button is-primary theEditButton'
+                  style={this.state.toggleEdit ? null : displayNone}
+                  onClick={this.onEditSubmit}>Edit</button>
+                <br />
+
+
+              <nav class="level is-mobile">
+                <div className='level-left'>
+                  <button
+                    className='level-item button'
+                    onClick={this.onLikeHandle.bind(this)}>
+                    {`${this.state.times} Like`}</button>
+
+                  <button
+                    className='level-item button'
+                    onClick={this.onToggleEdit}>Edit</button>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <div className='media-right'>
+            <button
+              className='delete'
+              onClick={this.onDeleteComment.bind(this)}></button>
+          </div>
+        </article>
       </div>
     )
   }

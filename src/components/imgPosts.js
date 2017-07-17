@@ -87,21 +87,36 @@ class ImgPosts extends Component {
   render(){
     console.log( this.state.editinput )
     return(
-      <div>
-        <img src={this.props.imgurl} alt='failed to upload'/>
-        <br />
-        <button
-          onClick={this.onLikeHandle.bind(this)}>
-          {`${this.state.times} Like`}
-        </button>
-        <button onClick={this.onToggleComment}>{`${this.state.comment.length} Comment`}</button>
-        <button onClick={this.onDel.bind(this)}>Delete</button>
-        <Comment
-          status={this.state.toggleComment}
-          editComment={this.onCommentEditSubmit}
-          deleteComment={this.deleteComment.bind(this)}
-          mainComment={this.state.comment}
-          changeComment={this.postComment.bind(this)}/>
+      <div className='imgposts'>
+        <div className='card'>
+          <div className='card-image'>
+            <figure className="image is-4by3">
+              <img src={this.props.imgurl} alt='failed to upload'/>
+            </figure>
+
+          </div>
+
+          <footer className='card-footer'>
+            <a
+              className="card-footer-item"
+              onClick={this.onLikeHandle.bind(this)}>
+              {`${this.state.times} Like`}
+            </a>
+            <a
+              className="card-footer-item"
+              onClick={this.onToggleComment}>{`${this.state.comment.length} Comment`}</a>
+            <a
+              className="card-footer-item"
+              onClick={this.onDel.bind(this)}>Delete</a>
+          </footer>
+          </div>
+
+          <Comment
+            status={this.state.toggleComment}
+            editComment={this.onCommentEditSubmit}
+            deleteComment={this.deleteComment.bind(this)}
+            mainComment={this.state.comment}
+            changeComment={this.postComment.bind(this)}/>
     </div>
     )
   }

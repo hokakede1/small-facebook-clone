@@ -6,7 +6,6 @@ import axios from 'axios'
 import Bbc from './news'
 
 var apiKey = '42fb356a7c184d6c805b5b2ba3ce44aa'
-
 class NewsFeed extends Component{
   constructor(props){
     super(props)

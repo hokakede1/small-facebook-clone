@@ -49,19 +49,38 @@ class Comment extends Component {
     }
 
     return(
-      <div style={this.props.status ? null : displayNone}>
-        {commentContent}
-        <form onSubmit={this.commentSubmit.bind(this)}>
-          <label>
-            <input
-                  value={this.state.commentinput}
-                  onChange={this.commentListener.bind(this)}
-                  placeholder='type your comment'></input>
-          </label>
-            <button>Comment</button>
-        </form>
-      </div>
-    )
+        <div className='comment' style={this.props.status ? null : displayNone}>
+          {commentContent}
+          <div >
+            <article className='media'>
+
+              <figure className="media-left">
+                  <p className="image is-64x64">
+                    <img src="http://bulma.io/images/placeholders/128x128.png" />
+                  </p>
+                </figure>
+
+
+              <div className='media-content'>
+                <form onSubmit={this.commentSubmit.bind(this)}>
+                  <div class="field">
+                  <label>
+                    <input
+                          className='textarea'
+                          value={this.state.commentinput}
+                          onChange={this.commentListener.bind(this)}
+                          placeholder='type your comment...'></input>
+                  </label>
+                  </div>
+                    <button className='button'>Comment</button>
+                </form>
+
+
+              </div>
+            </article>
+          </div>
+        </div>
+        )
   }
 }
 

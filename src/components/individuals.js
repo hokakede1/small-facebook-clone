@@ -59,6 +59,9 @@ class Individual extends Component {
 
   onEditSubmit(){
     this.props.editPost(this.props.index, this.state.copy)
+    this.setState({
+      toggleEdit: !this.state.toggleEdit
+    })
   }
 
   onLikeHandle(){
@@ -91,31 +94,68 @@ class Individual extends Component {
       display: 'none'
     }
     return(
-      <div>
-        <h1>{this.props.content}</h1>
-        <input
-              style={this.state.toggleEdit ? null : displayNone}
-              value={this.state.copy}
-              onChange={this.onEditChange}
-          ></input>
-        <button
-          style={this.state.toggleEdit ? null : displayNone}
-          onClick={this.onEditSubmit}>EDIT</button>
-        <br />
-        <button
-          onClick={this.onLikeHandle.bind(this)}>
-          {`${this.state.times} Like`}
-        </button>
-        <button onClick={this.onToggleEdit}>Edit</button>
-        <button onClick={this.onToggleComment}>{`${this.state.comment.length} Comment`}</button>
-        <button onClick={this.onDel.bind(this)}>Delete</button>
-        <Comment
-          status={this.state.toggleComment}
-          editComment={this.onCommentEditSubmit}
-          deleteComment={this.deleteComment.bind(this)}
-          mainComment={this.state.comment}
-          changeComment={this.postComment.bind(this)}/>
-    </div>
+      <div className='posts'>
+        <div className='card'>
+          <header className='card-header'>
+            <p className='card-header-title'>
+              Huy Dang
+            </p>
+          </header>
+          <div className="card-content">
+              <div className="content">
+
+          <h1
+            style={this.state.toggleEdit ? displayNone : null}
+            className='title is-2'>{this.props.content}</h1>
+
+          <input
+                className='textarea'
+                style={this.state.toggleEdit ? null : displayNone}
+                value={this.state.copy}
+                onChange={this.onEditChange}
+            ></input>
+              </div>
+          </div>
+
+          <button
+            className='button is-primary theEditButton'
+            style={this.state.toggleEdit ? null : displayNone}
+            onClick={this.onEditSubmit}>EDIT</button>
+          <footer className="card-footer">
+
+
+
+            <a
+                className='card-footer-item'
+                onClick={this.onLikeHandle.bind(this)}>
+                {`${this.state.times} Like`}
+            </a>
+
+
+            <a
+              className='card-footer-item'
+              onClick={this.onToggleEdit}>Edit</a>
+
+            <a
+              className='card-footer-item'
+              onClick={this.onToggleComment}>{`${this.state.comment.length} Comment`}</a>
+
+            <a
+              className='card-footer-item'
+              onClick={this.onDel.bind(this)}>Delete</a>
+
+
+            </footer>
+
+            </div>
+
+            <Comment
+              status={this.state.toggleComment}
+              editComment={this.onCommentEditSubmit}
+              deleteComment={this.deleteComment.bind(this)}
+              mainComment={this.state.comment}
+              changeComment={this.postComment.bind(this)}/>
+        </div>
     )
   }
 }

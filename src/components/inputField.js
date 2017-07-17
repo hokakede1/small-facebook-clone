@@ -76,41 +76,74 @@ class InputField extends Component {
     }
 
     return (
-      <div>
-        <form onSubmit={this.onClickEvent.bind(this)}
-          style={this.state.imgUpload ? displayNone : displayBlock}>
-            <label>
-              <input type='text'
-                value={this.state.input}
-                onChange={this.onHandleChange.bind(this)}
-                placeholder='What do you feel ?'/>
-            </label>
-            <button  type='submit'>POST</button>
-        </form>
+      <div className='main-header'>
+        <article className='media'>
+
+          <figure className="media-left">
+            <p className="image is-64x64">
+              <img src="http://bulma.io/images/placeholders/128x128.png" />
+            </p>
+          </figure>
+
+          <div className="media-content">
+            <div className="field">
+                <form onSubmit={this.onClickEvent.bind(this)}
+                  style={this.state.imgUpload ? displayNone : displayBlock}>
+                    <label>
+                      <input
+                        className='textarea'
+                        type='text'
+                        value={this.state.input}
+                        onChange={this.onHandleChange.bind(this)}
+                        placeholder='What do you feel ?'/>
+                    </label>
+                    <button
+                      className='button'
+                      type='submit'>POST</button>
+                </form>
 
 
 
-        <form onSubmit={this.onSubmitImg.bind(this)}
-              style={this.state.imgUpload ? displayBlock : displayNone}>
-          <label>
-            <input type='text'
-              value={this.state.imgInput}
-              onChange={this.onImgInputChange.bind(this)}
-              placeholder='Please enter a url'/>
-          </label>
-          <button  type='submit'>UPLOAD</button>
-        </form>
 
 
-        <button onClick={this.onUploadImg.bind(this)}
-                style={this.state.imgUpload ? displayNone : displayBlock}
-          >Upload Picture</button>
+            <form onSubmit={this.onSubmitImg.bind(this)}
+                  style={this.state.imgUpload ? displayBlock : displayNone}>
+              <label>
+                <input
+                  className='input'
+                  type='text'
+                  value={this.state.imgInput}
+                  onChange={this.onImgInputChange.bind(this)}
+                  placeholder='Please enter a url'/>
+              </label>
+              <button
+                className='button'
+                type='submit'>UPLOAD</button>
+            </form>
 
 
-        <button onClick={this.onPostStatus.bind(this)}
-                style={this.state.imgUpload ? displayBlock : displayNone}
-          >Post a status</button>
 
+          </div>
+
+            <nav className="level">
+              <div className="level-right">
+                    <button
+                            className='button level-item is-primary'
+                            onClick={this.onUploadImg.bind(this)}
+                            style={this.state.imgUpload ? displayNone : displayBlock}
+                      >Upload Picture</button>
+
+                    <button
+                      className='button level-item is-primary'
+                      onClick={this.onPostStatus.bind(this)}
+                      style={this.state.imgUpload ? displayBlock : displayNone}
+                      >Post a status</button>
+                </div>
+            </nav>
+
+
+          </div>
+        </article>
       </div>
     )
   }

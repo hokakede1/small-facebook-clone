@@ -64,20 +64,49 @@ export default class Bbc extends Component {
   render() {
 
     return (
-      <div>
-        <h1>{this.props.author}</h1>
-        <a href={this.props.link} target='_blank' >
-          <img alt='Fail to Upload' src={this.props.thumbnail}/> </a>
-        <a href={this.props.link} target='_blank'><h1>{this.props.header}</h1> </a>
-        <button onClick={this.onLikeHandle}>{`${this.state.times} Like`}</button>
-        <button onClick={this.onToggleComment}>{`${this.state.comment.length} Comment`}</button>
-        <Comment
-          status={this.state.toggleComment}
-          editComment={this.onCommentEditSubmit}
-          deleteComment={this.deleteComment.bind(this)}
-          mainComment={this.state.comment}
-          changeComment={this.postComment.bind(this)}/>
-      </div>
+      <div className='news'>
+      <div className='card'>
+        <div className='card-image'>
+            <figure className="image is-4by3">
+              <a href={this.props.link} target='_blank' >
+                <img alt='Fail to Upload' src={this.props.thumbnail} /> </a>
+            </figure>
+            </div>
+
+            <div className='card-content'>
+              <div class="media-content">
+                 <p class="title is-4">{this.props.author}</p>
+              </div>
+
+            <div className='content'>
+              <a href={this.props.link} target='_blank'>{this.props.header}</a>
+            </div>
+
+        </div>
+
+          <footer className='card-footer'>
+            <a
+              className='card-footer-item'
+              onClick={this.onLikeHandle}>
+              {`${this.state.times} Like`}</a>
+
+            <a
+              className='card-footer-item'
+              onClick={this.onToggleComment}>
+              {`${this.state.comment.length} Comment`}</a>
+          </footer>
+
+
+
+          </div>
+
+            <Comment
+              status={this.state.toggleComment}
+              editComment={this.onCommentEditSubmit}
+              deleteComment={this.deleteComment.bind(this)}
+              mainComment={this.state.comment}
+              changeComment={this.postComment.bind(this)}/>
+          </div>
     )
   }
 }

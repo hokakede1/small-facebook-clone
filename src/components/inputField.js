@@ -2,6 +2,12 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { postNewsFeed, postImg } from '../actions'
 
+function mapStatetoProps(state){
+  return{
+    avatar: state.profilePic
+  }
+}
+
 
 class InputField extends Component {
   constructor(props){
@@ -81,7 +87,7 @@ class InputField extends Component {
 
           <figure className="media-left">
             <p className="image is-64x64">
-              <img src="http://bulma.io/images/placeholders/128x128.png" />
+              <img src={this.props.avatar} />
             </p>
           </figure>
 
@@ -150,4 +156,4 @@ class InputField extends Component {
 }
 
 
-export default connect(null, {postNewsFeed, postImg})(InputField)
+export default connect(mapStatetoProps, {postNewsFeed, postImg})(InputField)

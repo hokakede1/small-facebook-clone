@@ -6,9 +6,9 @@ export default function SearchBar(){
     <div>
       <nav className='nav main-nav'>
         <div className="nav-left nave-menu is-hidden-touch">
-          <a className="navbar-item" href="/">
+          <Link className="navbar-item" to="/">
             <h1 className='title logo'>Socials</h1>
-          </a>
+          </Link>
         </div>
 
         <div className='nav-center is-hidden-desktop'>

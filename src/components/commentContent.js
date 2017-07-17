@@ -1,4 +1,10 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+function mapStatetoProps(state){
+  return{
+    avatar: state.profilePic
+  }
+}
 
 class CommentContent extends Component {
   constructor(props){
@@ -59,7 +65,7 @@ class CommentContent extends Component {
         <article className='media'>
           <div className="media-left">
             <figure className="image is-64x64">
-            <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image" />
+            <img src={this.props.avatar} alt="Image" />
             </figure>
           </div>
 
@@ -108,4 +114,4 @@ class CommentContent extends Component {
 
 }
 
-export default CommentContent
+export default connect(mapStatetoProps)(CommentContent)

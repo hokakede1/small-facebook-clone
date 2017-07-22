@@ -52,8 +52,8 @@ class NewsFeed extends Component{
 
   return (
     <div>
-      {post}
       {img}
+      {post}
       {news}
     </div>
   )

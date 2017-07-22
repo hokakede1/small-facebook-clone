@@ -91,9 +91,9 @@ class Profile extends Component {
 
       </section>
 
-      <div>
-        {post}
+      <div>    
         {img}
+        {post}
       </div>
 
     </div>

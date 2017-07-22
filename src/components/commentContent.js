@@ -90,14 +90,20 @@ class CommentContent extends Component {
 
               <nav class="level is-mobile">
                 <div className='level-left'>
-                  <button
-                    className='level-item button'
-                    onClick={this.onLikeHandle.bind(this)}>
-                    {`${this.state.times} Like`}</button>
+                  <div className='EditButton'>
+                    <a
+                      className='button'
+                      onClick={this.onLikeHandle.bind(this)}>
+                      {`${this.state.times} Like`}</a>
+                  </div>
+                  <div className='EditButton'>
+                    <a
+                      className='button'
+                      onClick={this.onToggleEdit}>Edit</a>
+                  </div>
 
-                  <button
-                    className='level-item button'
-                    onClick={this.onToggleEdit}>Edit</button>
+
+
                 </div>
               </nav>
             </div>
